@@ -1,3 +1,5 @@
-<h1><%= @user.name %></h1>
+<h1><%= @user.username %></h1>
+<%= @user.name %>
+<%= @user.profile %>
+<%= link_to @user.link, @user.link, target: "_blank" %>
 <%= link_to('Edit', edit_user_path) %>
-<%= link_to('password_change', "users/password_change" ) %>

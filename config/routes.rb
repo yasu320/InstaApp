@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'static_pages#home'
   get "/rule" => "static_pages#rule"
-  get "/users/:id/password_change" => "users#password_change"
-  patch "/users/:id/password_change" => "users#update_password"
+  get "/users/:id/password/change" => "users#password_change", as: "password_change"
+  patch "/password_change" => "users#update_password"
   resources :users
 end

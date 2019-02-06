@@ -7,10 +7,28 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 
+      <%= f.label :username %>
+      <%= f.text_field :username, class: 'form-control' %>
+
+      <%= f.label :link %>
+      <%= f.url_field :link, class: 'form-control' %>
+
+      <%= f.label :profile %>
+      <%= f.text_area :profile, class: 'form-control' %>
+
+      <h2>非公開情報</h2>
+
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :phone %>
+      <%= f.text_field :phone, class: 'form-control' %>
+
+      <%= f.label :sex %>
+      <%= f.select :sex, [["男", 1], ["女", 2], ["指定なし", 3]], class: 'form-control' %>
 
       <%= f.submit "Save changes", class: "btn btn-primary" %>
     <% end %>
   </div>
-</div
+  <%= link_to('password_change', password_change_path ) %>
+</div>

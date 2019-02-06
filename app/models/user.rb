@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true
+  VALID_PHONE_REGEX = /\A0[1-9]\d{0,3}[-(]\d{1,4}[-)]\d{4}\z/
+  validates :phone, format: { with: VALID_PHONE_REGEX }
 
   def email_required?
     false
