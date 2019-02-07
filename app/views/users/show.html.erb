@@ -1,13 +1,21 @@
-<div class="row">
-  <aside>
-    <section class="info">
-      <h1><%= @user.username %></h1>
-      <h2><%= @user.name %></h2>
-      <h2><%= @user.profile %></h2>
-      <% unless @user.link.nil? %>
-        <%= link_to @user.link, @user.link, target: "_blank" %>
-      <% end %>
-        <h2><%= link_to('プロフィールを編集', edit_user_path) %></h2>
-    </section>
-  </aside>
+<aside>
+  <section class="info">
+    <h1><%= @user.username %></h1>
+    <h2><%= @user.name %></h2>
+    <h2><%= @user.profile %></h2>
+    <% unless @user.link.nil? %>
+      <%= link_to @user.link, @user.link, target: "_blank" %>
+    <% end %>
+    <% if @user == current_user  %>
+      <h2><%= link_to('プロフィールを編集', edit_user_path) %></h2>
+    <% end %>
+  </section>
+</aside>
+<div>
+  <% if @user.microposts.any? %>
+    <ol class="microposts">
+      <%= render @microposts %>
+    </ol>
+    <%= will_paginate @microposts %>
+  <% end %>
 </div>

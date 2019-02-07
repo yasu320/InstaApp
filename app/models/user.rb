@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true, presence: true
   VALID_PHONE_REGEX = /\A0[1-9]\d{0,3}[-(]\d{1,4}[-)]\d{4}\z/
   validates :phone, format: { with: VALID_PHONE_REGEX }, allow_blank: true
+  has_many :microposts, dependent: :destroy
 
   def email_required?
     false

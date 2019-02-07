@@ -2,16 +2,21 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user!
 
+  def index
+      @users = User.paginate(page: params[:page])
+  end
+
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update_attributes(user_params)
       redirect_to user_path(@user)
     else
@@ -43,5 +48,9 @@ class UsersController < ApplicationController
   def user_params
       params.require(:user).permit(:name, :username, :email, :password, :password_confirmation, :current_password,
                                     :link, :profile, :phone, :sex)
+  end
+
+  def feed
+    Micropost.where("user_id = ?",id)
   end
 end

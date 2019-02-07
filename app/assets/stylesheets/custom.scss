@@ -12,6 +12,8 @@ $gray-medium-light: #eaeaea;
 body {
   padding-top: 60px;
   background-color: #fafafa;
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
 }
 
 section {
@@ -191,5 +193,32 @@ aside {
     h2 {
       padding-top: 0;
     }
+  }
+}
+
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-column-gap: 30px;
+  justify-content: center;
+  padding-left: 0;
+  .delete_img {
+    text-align: left;
   }
 }

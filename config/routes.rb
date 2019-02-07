@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get "/users/:id/password/change" => "users#password_change", as: "password_change"
   patch "/users/:id/password/change" => "users#update_password"
   resources :users
+  resources :microposts, only: [:create, :destroy, :new]
 end
