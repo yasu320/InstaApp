@@ -27,6 +27,7 @@ class User < ApplicationRecord
         email:    auth.info.email,
         password: Devise.friendly_token[0, 20]
       )
+      user.save(:validate => false)
     end
 
     user
