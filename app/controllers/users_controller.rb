@@ -33,10 +33,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to new_user_registration_url
+  end
+
   private
 
   def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password,
+      params.require(:user).permit(:name, :username, :email, :password, :password_confirmation, :current_password,
                                     :link, :profile, :phone, :sex)
   end
 end

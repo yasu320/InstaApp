@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
   get "/rule" => "static_pages#rule"
   get "/users/:id/password/change" => "users#password_change", as: "password_change"
-  patch "/password_change" => "users#update_password"
+  patch "/users/:id/password/change" => "users#update_password"
   resources :users
 end
