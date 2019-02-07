@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails',        '5.1.6'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'devise-bootstrap-views'
 gem 'bootstrap-sass', '3.3.7'
 gem "font-awesome-rails"
