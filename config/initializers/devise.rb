@@ -289,8 +289,7 @@ Devise.setup do |config|
   #   include Turbolinks::Controller
   # end
 
-  Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, ENV['557973498045118'], ENV['06db9e63669d589117b317957a9b88af'],
-    scope: 'email,user_birthday,read_stream', display: 'popup'
+  Devise.setup do |config|
+    config.omniauth :facebook, '557973498045118','06db9e63669d589117b317957a9b88af'
   end
 end
