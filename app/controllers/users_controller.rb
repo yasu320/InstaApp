@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-      @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page])
   end
 
   def show
@@ -41,6 +41,18 @@ class UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     redirect_to new_user_registration_url
+  end
+
+  def following
+     @user  = User.find(params[:id])
+     @users = @user.following.paginate(page: params[:page])
+     render 'show_follow'
+  end
+
+ def followers
+     @user  = User.find(params[:id])
+     @users = @user.followers.paginate(page: params[:page])
+     render 'show_follow'
   end
 
   private

@@ -1,11 +1,22 @@
-<li id= "micropost-<%= micropost.id %>">
-  <span>
-    <%= image_tag micropost.picture.url if micropost.picture? %>
-  </span>
-  <div>
-    <% if current_user %>
-      <%= link_to "削除する", micropost, method: :delete,
-                                        data: { confirm: "この写真を本当に削除しますか？"} %>
-    <% end %>
+<% if controller.controller_name == "static_pages" && controller.action_name == "home" %>
+  <div class="wrapper">
+    <li class= "feed_microposts" >
+      <span class="user"><%= link_to micropost.user.name, micropost.user, style: "color:#000; text-decoration: none;" %></span>
+      <span>
+        <%= image_tag micropost.picture.url if micropost.picture? %>
+      </span>
+    </li>
   </div>
-</li>
+  <% else %>
+    <li>
+      <span>
+        <%= image_tag micropost.picture.url if micropost.picture? %>
+      </span>
+      <div>
+        <% if current_user %>
+          <%= link_to "削除する", micropost, method: :delete,
+                                            data: { confirm: "この写真を本当に削除しますか？"} %>
+        <% end %>
+      </div>
+    </li>
+<% end %>

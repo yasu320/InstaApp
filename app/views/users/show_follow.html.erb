@@ -15,11 +15,14 @@
     <% end %>
   </section>
 </aside>
+
 <div>
-  <% if @user.microposts.any? %>
-    <ol class= "show_microposts">
-      <%= render @microposts %>
-    </ol>
-    <%= will_paginate @microposts %>
+<% if @users.any? %>
+  <% @users.each do |user| %>
+    <li class= "follow">
+      <%= link_to user.name, user %>
+    </li>
   <% end %>
+<%= will_paginate %>
+<% end %>
 </div>
