@@ -1,9 +1,18 @@
-<% provide(:title, @user.username + "さん") %>
+<% if current_user.username.nil? %>
+  <% provide(:title, "") %>
+<% else %>
+  <% provide(:title, @user.username + "さん") %>
+<% end %>
+
 <aside>
   <section class="info">
     <div class="gravatar">
       <%= gravatar_for @user %>
-      <h1><%= link_to @user.username, user_path(@user), style: "color:#000; text-decoration: none;" %></h1>
+      <% if current_user.username.nil? %>
+        <h1><%= "ユーザーネームを決めてください" %></h1>
+      <% else %>
+        <h1><%= link_to @user.username, user_path(@user), style: "color:#000; text-decoration: none;" %></h1>
+      <% end %>
     </div>
     <h2><%= @user.name %></h2>
     <%= render 'follow_form' if user_signed_in? %>
