@@ -1,13 +1,20 @@
 <% provide(:title, @user.username + "さん") %>
 <aside>
   <section class="info">
-    <h1><%= link_to @user.username, user_path, style: "color:#000; text-decoration: none;" %></h1>
+    <div class="gravatar">
+      <%= gravatar_for @user %>
+      <h1><%= link_to @user.username, user_path, style: "color:#000; text-decoration: none;" %></h1>
+    </div>
     <h2><%= @user.name %></h2>
     <%= render 'follow_form' if user_signed_in? %>
     <section class="stats">
       <%= render 'shared/stats' %>
     </section>
-    <h2><%= @user.profile %></h2>
+    <div class="row">
+      <div class= "col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3">
+        <h2><%= @user.profile %></h2>
+      </div>
+    </div>
     <% unless @user.link.nil? %>
       <%= link_to @user.link, @user.link, target: "_blank" %>
     <% end %>
@@ -18,6 +25,7 @@
 </aside>
 <div>
   <% if @user.microposts.any? %>
+  <h2>投稿<%= @user.microposts.count %>件</h2>
     <ol class= "show_microposts">
       <%= render @microposts %>
     </ol>
