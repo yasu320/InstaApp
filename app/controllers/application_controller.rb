@@ -1,9 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :search
 
   def after_sign_out_path_for(resource)
     user_session_path
+  end
+
+  def search
+    @q = User.ransack(params[:q])
+    @people = @q.result.paginate(page: params[:page])
   end
 
   protected

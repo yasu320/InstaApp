@@ -140,6 +140,15 @@ footer {
   width: 250px;
 }
 
+.search {
+  padding-top: 15px;
+  width: 20%;
+  margin-left: 250px;
+  ::placeholder {
+   text-align: center;
+  }
+}
+
 /* sidebar */
 
 aside {
