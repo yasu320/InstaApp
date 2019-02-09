@@ -1,24 +1,21 @@
-# README
+1 自分が苦労した点
+  ・一度チュートリアルを参考にログイン機能など実装していたため、Deviseを導入した時点で、
+    作り直しとなってしまった。Deviseがどのようなgemsか理解するのに時間がかかってしまった。
+  ・BootstrapやCssを用いてデザインをなかなか思い通りに表現できなかった。
+  ・テストコードが書けなかったので、今後書いていく。
+  ・emailカラムがDeviseの標準だとNOT NULL制約がついていた点。
+  ・Facebookでログインするとユーザーネームと名前のバリデーションに引っかかるというエラーがあり、
+    はまってしまった。本家のように名前の入力を強制できるようにしたい。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+2 学んだ点
+  ・最初の設計が肝心。
+  ・データベースのマイグレーション、ロールバックは今までより理解が進んだ。
+  ・Devise標準のhelperメソッドの利用。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3 自慢したい、相談したい点
+　・Deviseの利用はなるべく公式のWikiで調べて行なった。
+　・本家アプリのルーティングやデザインなど、できる範囲で真似した。
+  ・電話番号に正規表現のバリデーションをつけれた。
+  ・日本語化した。エラーメッセージなど一部できていないが・・・
+  ・ユーザー個別ページにサイドバーが表示されてしまっていて消せません。ヒントなど教えていただける
+    と助かります！

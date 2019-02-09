@@ -1,0 +1,43 @@
+<% if current_user.username.nil? %>
+  <% provide(:title, "") %>
+<% else %>
+  <% provide(:title, @user.username + "さん") %>
+<% end %>
+
+<aside>
+  <section class="info">
+    <div class="gravatar">
+      <%= gravatar_for @user %>
+      <% if current_user.username.nil? %>
+        <h1><%= "ユーザーネームを決めてください" %></h1>
+      <% else %>
+        <h1><%= link_to @user.username, user_path(@user), style: "color:#000; text-decoration: none;" %></h1>
+      <% end %>
+    </div>
+    <h2><%= @user.name %></h2>
+    <%= render 'follow_form' if user_signed_in? %>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+    <div class="row">
+      <div class= "col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3">
+        <h2><%= @user.profile %></h2>
+      </div>
+    </div>
+    <% unless @user.link.nil? %>
+      <%= link_to @user.link, @user.link, target: "_blank" %>
+    <% end %>
+    <% if @user == current_user  %>
+      <h2><%= link_to('プロフィールを編集', edit_user_path) %></h2>
+    <% end %>
+  </section>
+</aside>
+<div>
+  <% if @user.microposts.any? %>
+  <h2>投稿<%= @user.microposts.count %>件</h2>
+    <ol class= "show_microposts">
+      <%= render @microposts %>
+    </ol>
+    <%= will_paginate @microposts %>
+  <% end %>
+</div>
